@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticSearch.ConsoleApp", "ElasticSearch.ConsoleApp\ElasticSearch.ConsoleApp.csproj", "{394A0B51-5AA6-4851-A2A9-3BDC521D3335}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticSearch.AdvancedAPI", "ElasticSearch.AdvancedAPI\ElasticSearch.AdvancedAPI.csproj", "{5ADB989C-A12C-4F93-8E3B-2CC6A32F1244}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{394A0B51-5AA6-4851-A2A9-3BDC521D3335}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{394A0B51-5AA6-4851-A2A9-3BDC521D3335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{394A0B51-5AA6-4851-A2A9-3BDC521D3335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ADB989C-A12C-4F93-8E3B-2CC6A32F1244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ADB989C-A12C-4F93-8E3B-2CC6A32F1244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ADB989C-A12C-4F93-8E3B-2CC6A32F1244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ADB989C-A12C-4F93-8E3B-2CC6A32F1244}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

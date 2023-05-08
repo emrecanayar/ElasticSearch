@@ -19,6 +19,32 @@ namespace ElasticSearch
             }));
         }
 
+        /*
+         
+         Sınıfın yapılandırıcısı (public ElasticSearchManager(IConfiguration configuration)), ElasticSearch bağlantı ayarlarını alır ve bunları bir ConnectionSettings nesnesi içinde saklar.
+
+        GetIndexList() yöntemi, ElasticSearch'deki tüm indeksleri ve indekslerin durumunu döndüren bir sözlük sağlar.
+
+        InsertManyAsync() yöntemi, belirtilen indekse birden çok belge eklemenize olanak tanır.
+
+        CreateNewIndexAsync() yöntemi, belirtilen ayarlarla yeni bir indeks oluşturur.
+
+        DeleteByElasticIdAsync() yöntemi, belirtilen ElasticId'ye sahip belgeyi siler.
+
+        GetAllSearch<T>() yöntemi, belirtilen indeksteki tüm belgeleri alır ve ElasticSearchGetModel<T> türünde bir liste döndürür.
+
+        GetSearchByField<T>() yöntemi, belirtilen indekste belirtilen alana göre belgeleri alır ve ElasticSearchGetModel<T> türünde bir liste döndürür.
+
+        GetSearchBySimpleQueryString<T>() yöntemi, belirtilen indekste basit bir sorgu dizesine göre belgeleri alır ve ElasticSearchGetModel<T> türünde bir liste döndürür.
+
+        InsertAsync() yöntemi, belirtilen indekse yeni bir belge ekler.
+
+        UpdateByElasticIdAsync() yöntemi, belirtilen ElasticId'ye sahip belgeyi günceller.
+
+        GetElasticClient() yöntemi, verilen indeks adına göre ElasticSearch istemcisini (ElasticClient) oluşturur ve döndürür.
+         
+
+         */
 
         public IReadOnlyDictionary<IndexName, IndexState> GetIndexList()
         {

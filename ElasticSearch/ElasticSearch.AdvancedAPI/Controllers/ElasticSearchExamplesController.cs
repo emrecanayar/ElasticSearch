@@ -203,5 +203,67 @@ namespace ElasticSearch.AdvancedAPI.Controllers
                 return BadRequest();
             }
         }
+
+
+        //ElasticSearch içerisinde bulunan bütün indekslerin listesini getirir.
+        [HttpGet("GetIndexList")]
+        public IActionResult GetIndexList()
+        {
+            // GetIndexList yöntemini çağırarak indeks listesini alın
+            var indexList = _elasticSearch.GetIndexList();
+
+            // İşlemin başarılı olup olmadığını kontrol edin ve sonucu ekrana yazdırın
+            if (indexList.Count > 0)
+            {
+                var indexListDetail = indexList.ToList();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("CreateSampleIndexAsync")]
+        public async Task<IActionResult> CreateSampleIndexAsync(string indexName, string indexAlias)
+        {
+            //Oluşturulacak bir index için bir model oluşturalım.
+            var indexModel = new IndexModel
+            {
+                IndexName = indexName,
+                AliasName = indexAlias,
+                NumberOfReplicas = 1,
+                NumberOfShards = 5
+            };
+
+            /*
+             
+             
+             NumberOfReplicas ve NumberOfShards, Elasticsearch'teki indekslerin performans ve ölçeklenebilirlik özelliklerini etkileyen iki önemli faktördür.
+
+            NumberOfShards (Parça Sayısı): Bir Elasticsearch indeksi, birden fazla parçaya (shard) bölünebilir. Parçalar, indeksinizdeki verilerin alt kümesini temsil eder ve verilerinizi paralel olarak işlemenizi sağlar. Parça sayısını artırmak, genellikle arama ve dizinleme performansını artırır, çünkü işlemler birden fazla parçada eş zamanlı olarak gerçekleştirilebilir. Parça sayısı, indeks oluşturulduğunda belirlenir ve sonradan değiştirilemez. Bu nedenle, başlangıçta doğru bir parça sayısı belirlemek önemlidir.
+
+            NumberOfReplicas (Replika Sayısı): Replikalar, parçaların kopyalarıdır ve yüksek kullanılabilirlik ve hızlı okuma performansı sağlar. Replikalar, başka bir düğümde bulunan birincil parçanın kopyasıdır ve bir düğüm arızalandığında veya aşırı yüklendiğinde istekleri yönlendirebilir. Replika sayısını artırmak, okuma performansını ve hatalara karşı dayanıklılığı artırır. Replika sayısı, indeks oluşturulduktan sonra da değiştirilebilir.
+
+            NumberOfReplicas = 1 ve NumberOfShards = 5 ayarlarıyla, verileriniz 5 parçaya bölünür ve her parçanın bir replikası oluşturulur. Bu, ölçeklenebilirlik ve hata toleransı sağlar ve toplamda 10 parça (5 birincil parça ve 5 replika parça) oluşturur.
+             
+             
+             */
+
+
+
+
+            //Oluşturulan model neticesinde ElasticSearch içerisinde bir index oluştururuz.
+            var result = await _elasticSearch.CreateNewIndexAsync(indexModel);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }
